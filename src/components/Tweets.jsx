@@ -3,10 +3,11 @@ import "./Tweets.css";
 function Tweets({ tweets }) {
   return (
     <>
-      {tweets.map((t) => {
+      {tweets.map((t, i, arr) => {
+        const tweetFromEnd = arr[arr.length - 1 - i];
         return (
           <Card
-            key={t.username}
+            key={tweetFromEnd.id}
             shadow="sm"
             padding="sm"
             radius="md"
@@ -14,10 +15,10 @@ function Tweets({ tweets }) {
             className="tweet-card"
           >
             <Group justify="space-between" mb="xs">
-              <Text size="sm">{t.username}</Text>
-              <Text size="sm">{t.date}</Text>
+              <Text size="sm">{tweetFromEnd.username}</Text>
+              <Text size="sm">{tweetFromEnd.date}</Text>
             </Group>
-            <Text>{t.tweet}</Text>
+            <Text>{tweetFromEnd.tweet}</Text>
           </Card>
         );
       })}
