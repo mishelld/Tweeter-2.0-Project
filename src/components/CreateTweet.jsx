@@ -2,7 +2,7 @@ import { Button, Textarea, Card, Flex } from "@mantine/core";
 import "./CreateTweet.css";
 import { useState } from "react";
 
-function CreateTweet({ onAddTweet }) {
+function CreateTweet({ tweets, onAddTweet }) {
   const [text, setText] = useState("");
   const [username, setUsername] = useState("Bob");
   const maxChars = 140;
@@ -30,10 +30,9 @@ function CreateTweet({ onAddTweet }) {
           disabled={isDisabled}
           onClick={() =>
             onAddTweet({
-              id: crypto.randomUUID(),
-              username: username,
-              tweet: text,
-              date: new Date().toLocaleDateString(),
+              date: new Date().toISOString(),
+              userName: username,
+              content: text,
             })
           }
         >
