@@ -1,5 +1,5 @@
 import { Card, Text, Group } from "@mantine/core";
-
+import "./Tweets.css";
 function Tweets({ tweets }) {
   return (
     <>
@@ -11,6 +11,7 @@ function Tweets({ tweets }) {
             padding="sm"
             radius="md"
             withBorder
+            className="tweet-card"
           >
             <Group justify="space-between" mb="xs">
               <Text size="sm">{t.username}</Text>

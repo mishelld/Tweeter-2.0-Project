@@ -1,4 +1,4 @@
-import { Button, Textarea, Box } from "@mantine/core";
+import { Button, Textarea, Card, Flex } from "@mantine/core";
 import "./CreateTweet.css";
 import { useState } from "react";
 function CreateTweet({ onAddTweet }) {
@@ -7,7 +7,13 @@ function CreateTweet({ onAddTweet }) {
   const maxChars = 140;
   const isDisabled = text.length > maxChars;
   return (
-    <div className="create-tweet">
+    <Card
+      shadow="sm"
+      padding="sm"
+      radius="md"
+      withBorder
+      className="create-tweet"
+    >
       <Textarea
         placeholder="What you have in mind..."
         autosize
@@ -17,20 +23,22 @@ function CreateTweet({ onAddTweet }) {
         error={text.length > maxChars ? "more than 140 chars" : null}
         className="textarea"
       />
-      <Button
-        variant="filled"
-        disabled={isDisabled}
-        onClick={() =>
-          onAddTweet({
-            username: username,
-            tweet: text,
-            date: new Date().toLocaleDateString(),
-          })
-        }
-      >
-        Tweet
-      </Button>
-    </div>
+      <Flex justify="flex-end">
+        <Button
+          variant="filled"
+          disabled={isDisabled}
+          onClick={() =>
+            onAddTweet({
+              username: username,
+              tweet: text,
+              date: new Date().toLocaleDateString(),
+            })
+          }
+        >
+          Tweet
+        </Button>
+      </Flex>
+    </Card>
   );
 }
 export default CreateTweet;

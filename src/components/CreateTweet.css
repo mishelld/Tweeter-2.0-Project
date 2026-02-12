@@ -1,14 +1,11 @@
 .create-tweet {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   justify-content: space-between;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
+  width: 100%;
   gap: 10px;
 }
 
-.create-tweet .textarea {
-  width: 500px;
+.create-tweet .card {
+  width: 100%;
 }
