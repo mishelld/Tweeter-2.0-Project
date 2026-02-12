@@ -1,10 +1,15 @@
+import { useState } from "react";
 import CreateTweet from "../components/createTweet";
 import Tweets from "../components/Tweets";
 function Tweeter() {
+  const [tweets, setTweets] = useState([]);
+  const handleAddTweet = (tweet) => {
+    setTweets([...tweets, tweet]);
+  };
   return (
     <>
-      <CreateTweet />
-      <Tweets />
+      <CreateTweet onAddTweet={handleAddTweet} />
+      <Tweets tweets={tweets} />
     </>
   );
 }
