@@ -7,10 +7,9 @@ import "./Tweeter.css";
 import axios from "axios";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
+import "./home.css";
 
-function Tweeter() {
-  const [username, setUsername] = useState("Bob");
-
+function Tweeter({ username }) {
   /*
   const [tweets, setTweets] = useState(() => {
     const localTweets = localStorage.getItem("tweets");
@@ -32,6 +31,7 @@ function Tweeter() {
         "https://jsonplaceholder.typicode.com/posts",
         tweet,
       );
+      console.log(response);
       fetchTweets();
     } catch (error) {
       setError(error.message);
@@ -66,7 +66,12 @@ function Tweeter() {
   ) : error ? (
     <ErrorPage message={error} />
   ) : (
-    <Home username={username} tweets={tweets} onAddTweet={handleAddTweet} />
+    <Home
+      className="home"
+      username={username}
+      tweets={tweets}
+      onAddTweet={handleAddTweet}
+    />
   );
 }
 export default Tweeter;

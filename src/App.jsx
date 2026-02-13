@@ -5,17 +5,32 @@ import { MantineProvider } from "@mantine/core";
 import UserPage from "./pages/UserPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import { useState } from "react";
 
 function App() {
+  const [username, setUsername] = useState("Bob");
+  function handleUpdateUsername(name) {
+    setUsername(name);
+  }
   return (
     <>
       <MantineProvider>
         <BrowserRouter>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Tweeter />} />
-            <Route path="/user/:id" element={<UserPage />} />
-          </Routes>
+          <div style={{ paddingTop: "60px" }}>
+            <Routes>
+              <Route path="/" element={<Tweeter username={username} />} />
+              <Route
+                path="/user/:id"
+                element={
+                  <UserPage
+                    username={username}
+                    onUpdateUsername={handleUpdateUsername}
+                  />
+                }
+              />
+            </Routes>
+          </div>
         </BrowserRouter>
       </MantineProvider>
     </>
