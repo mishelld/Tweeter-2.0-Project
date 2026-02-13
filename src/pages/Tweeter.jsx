@@ -6,8 +6,11 @@ import { Flex, Box } from "@mantine/core";
 import "./Tweeter.css";
 import axios from "axios";
 import ErrorPage from "./ErrorPage";
+import Home from "./Home";
 
 function Tweeter() {
+  const [username, setUsername] = useState("Bob");
+
   /*
   const [tweets, setTweets] = useState(() => {
     const localTweets = localStorage.getItem("tweets");
@@ -29,7 +32,6 @@ function Tweeter() {
         "https://jsonplaceholder.typicode.com/posts",
         tweet,
       );
-      console.log(response);
       fetchTweets();
     } catch (error) {
       setError(error.message);
@@ -64,12 +66,7 @@ function Tweeter() {
   ) : error ? (
     <ErrorPage message={error} />
   ) : (
-    <Box className="tweeter">
-      <Flex gap="md" align="center" direction="column">
-        <CreateTweet tweets={tweets} onAddTweet={handleAddTweet} />
-        <Tweets tweets={tweets} />
-      </Flex>
-    </Box>
+    <Home username={username} tweets={tweets} onAddTweet={handleAddTweet} />
   );
 }
 export default Tweeter;
