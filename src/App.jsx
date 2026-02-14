@@ -7,21 +7,24 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
 import ContextProvider from "./components/ContextProvider";
+import TweetProvider from "./components/TweetProvider";
 
 function App() {
   return (
     <>
       <MantineProvider>
         <ContextProvider>
-          <BrowserRouter>
-            <Navbar />
-            <div style={{ paddingTop: "60px" }}>
-              <Routes>
-                <Route path="/" element={<Tweeter />} />
-                <Route path="/user/:id" element={<UserPage />} />
-              </Routes>
-            </div>
-          </BrowserRouter>
+          <TweetProvider>
+            <BrowserRouter>
+              <Navbar />
+              <div style={{ paddingTop: "60px" }}>
+                <Routes>
+                  <Route path="/" element={<Tweeter />} />
+                  <Route path="/user/:id" element={<UserPage />} />
+                </Routes>
+              </div>
+            </BrowserRouter>
+          </TweetProvider>
         </ContextProvider>
       </MantineProvider>
     </>

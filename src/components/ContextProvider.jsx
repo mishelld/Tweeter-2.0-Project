@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 export const UserContext = createContext();
 function ContextProvider({ children }) {
   const [username, setUsername] = useState("Bob");
+
   function onUpdateUsername(name) {
     setUsername(name);
   }

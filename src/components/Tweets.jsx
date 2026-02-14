@@ -1,6 +1,10 @@
 import { Card, Text, Group } from "@mantine/core";
 import "./Tweets.css";
-function Tweets({ tweets }) {
+import { TweetContext } from "../components/TweetProvider";
+import { useContext } from "react";
+function Tweets() {
+  const { tweets } = useContext(TweetContext);
+
   return (
     <>
       {tweets.map((t, i, arr) => {

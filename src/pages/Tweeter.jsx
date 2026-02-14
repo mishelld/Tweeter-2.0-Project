@@ -1,17 +1,15 @@
-import { useEffect, useState, useContext } from "react";
-import CreateTweet from "../components/createTweet";
-import Tweets from "../components/Tweets";
+import { useContext } from "react";
 import LoadingPage from "./LoadingPage";
-import { Flex, Box } from "@mantine/core";
 import "./Tweeter.css";
-import axios from "axios";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import "./home.css";
 import { UserContext } from "../components/ContextProvider";
+import { TweetContext } from "../components/TweetProvider";
 
 function Tweeter() {
   const { username } = useContext(UserContext);
+  const { error, loading } = useContext(TweetContext);
 
   /*
   const [tweets, setTweets] = useState(() => {
@@ -23,58 +21,13 @@ function Tweeter() {
     localStorage.setItem("tweets", JSON.stringify(tweets));
   }, [tweets]);
     */
-  const [tweets, setTweets] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  const handleAddTweet = async (tweet) => {
-    setLoading(true);
-    try {
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
-        tweet,
-      );
-      console.log(response);
-      fetchTweets();
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-  const fetchTweets = async () => {
-    try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts",
-      );
-      setTweets(
-        response.data.map((i) => ({
-          id: i.id,
-          date: i.id,
-          userName: i.title,
-          content: i.body,
-        })),
-      );
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    fetchTweets();
-  }, []);
   return loading ? (
     <LoadingPage />
   ) : error ? (
     <ErrorPage message={error} />
   ) : (
-    <Home
-      className="home"
-      username={username}
-      tweets={tweets}
-      onAddTweet={handleAddTweet}
-    />
+    <Home className="home" username={username} />
   );
 }
 export default Tweeter;

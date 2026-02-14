@@ -8,12 +8,8 @@ function Home({ username, tweets, onAddTweet }) {
     <>
       <Box className="tweeter">
         <Flex gap="md" align="center" direction="column">
-          <CreateTweet
-            username={username}
-            tweets={tweets}
-            onAddTweet={onAddTweet}
-          />
-          <Tweets tweets={tweets} />
+          <CreateTweet username={username} />
+          <Tweets />
         </Flex>
       </Box>
     </>
