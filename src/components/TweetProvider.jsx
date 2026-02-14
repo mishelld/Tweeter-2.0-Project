@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { supabase } from "../components/supabaseClient";
+
 export const TweetContext = createContext();
 
 function TweetProvider({ children }) {
@@ -9,11 +11,12 @@ function TweetProvider({ children }) {
   const handleAddTweet = async (tweet) => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        "https://jsonplaceholder.typicode.com/posts",
-        tweet,
-      );
-      console.log(response);
+      const { data, error } = await supabase.from("Tweets").insert([tweet]);
+      if (error) {
+        setError(error.message);
+        return;
+      }
+      console.log(tweet);
       setTweets([...tweets, tweet]);
     } catch (error) {
       setError(error.message);
@@ -23,15 +26,18 @@ function TweetProvider({ children }) {
   };
   const fetchTweets = async () => {
     try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts",
-      );
+      const { data, error } = await supabase.from("Tweets").select("*");
+      if (error) {
+        setError(error.message);
+        return;
+      }
+
       setTweets(
-        response.data.map((i) => ({
+        data.map((i) => ({
           id: i.id,
-          date: i.id,
-          userName: i.title,
-          content: i.body,
+          date: i.date,
+          username: i.username,
+          content: i.content,
         })),
       );
     } catch (error) {

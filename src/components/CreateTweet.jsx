@@ -33,7 +33,7 @@ function CreateTweet({ username }) {
           onClick={() =>
             handleAddTweet({
               date: new Date().toISOString(),
-              userName: username,
+              username: username,
               content: text,
             })
           }

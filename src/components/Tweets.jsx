@@ -19,7 +19,7 @@ function Tweets() {
             className="tweet-card"
           >
             <Group justify="space-between" mb="xs">
-              <Text size="sm">{tweetFromEnd.userName}</Text>
+              <Text size="sm">{tweetFromEnd.username}</Text>
               <Text size="sm">{tweetFromEnd.date}</Text>
             </Group>
             <Text>{tweetFromEnd.content}</Text>
