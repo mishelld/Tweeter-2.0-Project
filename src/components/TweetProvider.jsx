@@ -11,13 +11,15 @@ function TweetProvider({ children }) {
   const handleAddTweet = async (tweet) => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.from("Tweets").insert([tweet]);
+      const { data, error } = await supabase
+        .from("Tweets")
+        .insert([tweet])
+        .select();
       if (error) {
         setError(error.message);
         return;
       }
-      console.log(tweet);
-      setTweets([...tweets, tweet]);
+      setTweets([data[0], ...tweets]);
     } catch (error) {
       setError(error.message);
     } finally {

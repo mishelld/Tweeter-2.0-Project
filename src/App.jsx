@@ -19,7 +19,7 @@ function App() {
               <Navbar />
               <div style={{ paddingTop: "60px" }}>
                 <Routes>
-                  <Route path="/Tweeter-2.0-Project" element={<Tweeter />} />
+                  <Route path="/Tweeter-2.0-Project/" element={<Tweeter />} />
                   <Route
                     path="/Tweeter-2.0-Project/user/:id"
                     element={<UserPage />}
