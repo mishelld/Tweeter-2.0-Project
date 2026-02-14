@@ -1,9 +1,12 @@
 import { Button, TextInput, Flex } from "@mantine/core";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./UserPage.css";
+import { UserContext } from "../components/ContextProvider";
 
-function UserPage({ username, onUpdateUsername }) {
+function UserPage() {
+  const { username, onUpdateUsername } = useContext(UserContext);
   const [name, setName] = useState(username);
+
   return (
     <Flex direction="column" gap="md" className="user-page">
       <TextInput

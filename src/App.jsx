@@ -6,32 +6,23 @@ import UserPage from "./pages/UserPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { useState } from "react";
+import ContextProvider from "./components/ContextProvider";
 
 function App() {
-  const [username, setUsername] = useState("Bob");
-  function handleUpdateUsername(name) {
-    setUsername(name);
-  }
   return (
     <>
       <MantineProvider>
-        <BrowserRouter>
-          <Navbar />
-          <div style={{ paddingTop: "60px" }}>
-            <Routes>
-              <Route path="/" element={<Tweeter username={username} />} />
-              <Route
-                path="/user/:id"
-                element={
-                  <UserPage
-                    username={username}
-                    onUpdateUsername={handleUpdateUsername}
-                  />
-                }
-              />
-            </Routes>
-          </div>
-        </BrowserRouter>
+        <ContextProvider>
+          <BrowserRouter>
+            <Navbar />
+            <div style={{ paddingTop: "60px" }}>
+              <Routes>
+                <Route path="/" element={<Tweeter />} />
+                <Route path="/user/:id" element={<UserPage />} />
+              </Routes>
+            </div>
+          </BrowserRouter>
+        </ContextProvider>
       </MantineProvider>
     </>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CreateTweet from "../components/createTweet";
 import Tweets from "../components/Tweets";
 import LoadingPage from "./LoadingPage";
@@ -8,8 +8,11 @@ import axios from "axios";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import "./home.css";
+import { UserContext } from "../components/ContextProvider";
 
-function Tweeter({ username }) {
+function Tweeter() {
+  const { username } = useContext(UserContext);
+
   /*
   const [tweets, setTweets] = useState(() => {
     const localTweets = localStorage.getItem("tweets");
