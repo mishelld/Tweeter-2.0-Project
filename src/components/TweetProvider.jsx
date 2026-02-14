@@ -14,7 +14,7 @@ function TweetProvider({ children }) {
         tweet,
       );
       console.log(response);
-      fetchTweets();
+      setTweets([...tweets, tweet]);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -42,6 +42,12 @@ function TweetProvider({ children }) {
   };
   useEffect(() => {
     fetchTweets();
+
+    const interval = setInterval(() => {
+      fetchTweets();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
   return (
     <TweetContext.Provider value={{ tweets, error, loading, handleAddTweet }}>
