@@ -3,12 +3,12 @@ import Tweets from "../components/Tweets";
 import "./Home.css";
 import { Flex, Box } from "@mantine/core";
 
-function Home({ username, tweets, onAddTweet }) {
+function Home() {
   return (
     <>
       <Box className="tweeter">
         <Flex gap="md" align="center" direction="column">
-          <CreateTweet username={username} />
+          <CreateTweet />
           <Tweets />
         </Flex>
       </Box>

@@ -8,7 +8,7 @@ function Navbar() {
       <Flex className="navbar">
         <NavLink
           component={Link}
-          to="/"
+          to="/Tweeter-2.0-Project"
           label="Home"
           variant="filled"
           active
@@ -16,7 +16,7 @@ function Navbar() {
         />
         <NavLink
           component={Link}
-          to="/user/1"
+          to="/Tweeter-2.0-Project/user/1"
           label="User"
           variant="filled"
           active

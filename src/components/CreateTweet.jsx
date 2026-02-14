@@ -2,9 +2,11 @@ import { Button, Textarea, Card, Flex } from "@mantine/core";
 import "./CreateTweet.css";
 import { useState, useContext } from "react";
 import { TweetContext } from "../components/TweetProvider";
+import { UserContext } from "../components/ContextProvider";
 
-function CreateTweet({ username }) {
+function CreateTweet() {
   const { handleAddTweet } = useContext(TweetContext);
+  const { username } = useContext(UserContext);
 
   const [text, setText] = useState("");
   const maxChars = 140;

@@ -27,7 +27,7 @@ function Tweeter() {
   ) : error ? (
     <ErrorPage message={error} />
   ) : (
-    <Home className="home" username={username} />
+    <Home className="home" />
   );
 }
 export default Tweeter;
