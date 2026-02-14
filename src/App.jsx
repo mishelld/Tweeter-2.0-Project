@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 import ContextProvider from "./components/ContextProvider";
 import TweetProvider from "./components/TweetProvider";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -19,7 +20,11 @@ function App() {
               <Navbar />
               <div style={{ paddingTop: "60px" }}>
                 <Routes>
-                  <Route path="/Tweeter-2.0-Project/" element={<Tweeter />} />
+                  <Route path="/Tweeter-2.0-Project/" element={<LoginPage />} />
+                  <Route
+                    path="/Tweeter-2.0-Project/home"
+                    element={<Tweeter />}
+                  />
                   <Route
                     path="/Tweeter-2.0-Project/user/:id"
                     element={<UserPage />}

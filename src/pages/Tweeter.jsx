@@ -8,7 +8,6 @@ import { UserContext } from "../components/ContextProvider";
 import { TweetContext } from "../components/TweetProvider";
 
 function Tweeter() {
-  const { username } = useContext(UserContext);
   const { error, loading } = useContext(TweetContext);
 
   /*

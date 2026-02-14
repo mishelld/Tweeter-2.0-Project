@@ -19,7 +19,6 @@ function UserPage() {
         <Button variant="filled" onClick={() => onUpdateUsername(name)}>
           Save
         </Button>
-        ;
       </Flex>
     </Flex>
   );
