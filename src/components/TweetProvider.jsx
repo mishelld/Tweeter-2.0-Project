@@ -26,7 +26,10 @@ function TweetProvider({ children }) {
   };
   const fetchTweets = async () => {
     try {
-      const { data, error } = await supabase.from("Tweets").select("*");
+      const { data, error } = await supabase
+        .from("Tweets")
+        .select("*")
+        .order("date", { ascending: false });
       if (error) {
         setError(error.message);
         return;

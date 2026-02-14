@@ -7,11 +7,10 @@ function Tweets() {
 
   return (
     <>
-      {tweets.map((t, i, arr) => {
-        const tweetFromEnd = arr[arr.length - 1 - i];
+      {tweets.map((t) => {
         return (
           <Card
-            key={tweetFromEnd.id}
+            key={t.id}
             shadow="sm"
             padding="sm"
             radius="md"
@@ -19,10 +18,10 @@ function Tweets() {
             className="tweet-card"
           >
             <Group justify="space-between" mb="xs">
-              <Text size="sm">{tweetFromEnd.username}</Text>
-              <Text size="sm">{tweetFromEnd.date}</Text>
+              <Text size="sm">{t.username}</Text>
+              <Text size="sm">{t.date}</Text>
             </Group>
-            <Text>{tweetFromEnd.content}</Text>
+            <Text>{t.content}</Text>
           </Card>
         );
       })}
