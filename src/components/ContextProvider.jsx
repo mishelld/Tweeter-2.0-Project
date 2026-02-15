@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
@@ -8,6 +8,21 @@ function ContextProvider({ children }) {
 
   const [username, setUsername] = useState("Bob");
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setUser(session?.user ?? null);
+
+      if (!session?.user) {
+        navigate("/Tweeter-2.0-Project/", { replace: true });
+      }
+    };
+
+    checkSession();
+  }, [navigate]);
 
   function onUpdateUsername(name) {
     setUsername(name);
