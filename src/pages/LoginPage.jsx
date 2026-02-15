@@ -1,21 +1,15 @@
 import { supabase } from "../components/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import { Button, TextInput, Flex, em } from "@mantine/core";
-import { useState } from "react";
+import { UserContext } from "../components/ContextProvider";
+
+import { useState, useContext } from "react";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const { handleLogin } = useContext(UserContext);
 
-  const handleLogin = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (error) return;
-    navigate("/Tweeter-2.0-Project/home");
-  };
   return (
     <>
       <Flex direction="column" gap="md">
@@ -31,7 +25,7 @@ function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button variant="filled" onClick={() => handleLogin()}>
+        <Button variant="filled" onClick={() => handleLogin(email, password)}>
           Log In
         </Button>
       </Flex>

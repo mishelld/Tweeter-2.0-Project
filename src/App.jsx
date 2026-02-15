@@ -15,9 +15,9 @@ function App() {
   return (
     <>
       <MantineProvider>
-        <ContextProvider>
-          <TweetProvider>
-            <BrowserRouter>
+        <BrowserRouter>
+          <ContextProvider>
+            <TweetProvider>
               <Routes>
                 <Route path="/Tweeter-2.0-Project/" element={<LoginPage />} />
                 <Route
@@ -37,9 +37,9 @@ function App() {
                   }
                 />
               </Routes>
-            </BrowserRouter>
-          </TweetProvider>
-        </ContextProvider>
+            </TweetProvider>
+          </ContextProvider>
+        </BrowserRouter>
       </MantineProvider>
     </>
   );

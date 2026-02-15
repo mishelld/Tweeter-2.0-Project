@@ -1,8 +1,12 @@
-import { NavLink, Flex } from "@mantine/core";
-import { IconHome2, IconUser } from "@tabler/icons-react";
+import { NavLink, Flex, Button } from "@mantine/core";
+import { IconHome2, IconUser, IconLogout } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../components/ContextProvider";
+import { useContext } from "react";
 import "./Navbar.css";
 function Navbar() {
+  const { handleLogout } = useContext(UserContext);
+
   return (
     <>
       <Flex className="navbar">
@@ -22,6 +26,7 @@ function Navbar() {
           active
           leftSection={<IconUser size={16} stroke={1.5} />}
         />
+        <Button onClick={handleLogout}>Log out</Button>
       </Flex>
     </>
   );
