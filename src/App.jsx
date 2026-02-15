@@ -9,6 +9,7 @@ import { useState } from "react";
 import ContextProvider from "./components/ContextProvider";
 import TweetProvider from "./components/TweetProvider";
 import LoginPage from "./pages/LoginPage";
+import MainLayout from "./pages/MainLayout";
 
 function App() {
   return (
@@ -17,20 +18,25 @@ function App() {
         <ContextProvider>
           <TweetProvider>
             <BrowserRouter>
-              <Navbar />
-              <div style={{ paddingTop: "60px" }}>
-                <Routes>
-                  <Route path="/Tweeter-2.0-Project/" element={<LoginPage />} />
-                  <Route
-                    path="/Tweeter-2.0-Project/home"
-                    element={<Tweeter />}
-                  />
-                  <Route
-                    path="/Tweeter-2.0-Project/user/:id"
-                    element={<UserPage />}
-                  />
-                </Routes>
-              </div>
+              <Routes>
+                <Route path="/Tweeter-2.0-Project/" element={<LoginPage />} />
+                <Route
+                  path="/Tweeter-2.0-Project/home"
+                  element={
+                    <MainLayout>
+                      <Tweeter />
+                    </MainLayout>
+                  }
+                />
+                <Route
+                  path="/Tweeter-2.0-Project/user/:id"
+                  element={
+                    <MainLayout>
+                      <UserPage />
+                    </MainLayout>
+                  }
+                />
+              </Routes>
             </BrowserRouter>
           </TweetProvider>
         </ContextProvider>
