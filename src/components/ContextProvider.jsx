@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
+import { em } from "@mantine/core";
 
 function ContextProvider({ children }) {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function ContextProvider({ children }) {
         setUser(session?.user ?? null);
 
         if (!session?.user) {
-          navigate("/Tweeter-2.0-Project/", { replace: true });
+          //  navigate("/Tweeter-2.0-Project/", { replace: true });
         }
       } catch (error) {
         setError(error.message);
@@ -71,6 +72,25 @@ function ContextProvider({ children }) {
       setLoading(false);
     }
   };
+  const handleSignup = async (email, password) => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        setError(error.message);
+        console.log(error);
+        return;
+      }
+      setUser(data.user);
+      setUsername(email);
+      navigate("/Tweeter-2.0-Project/home");
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <UserContext.Provider
@@ -79,6 +99,7 @@ function ContextProvider({ children }) {
           onUpdateUsername,
           handleLogout,
           handleLogin,
+          handleSignup,
           error,
           loading,
         }}

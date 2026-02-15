@@ -13,7 +13,7 @@ import LoadingPage from "./pages/LoadingPage";
 import ErrorPage from "./pages/ErrorPage";
 import { UserContext } from "./components/ContextProvider";
 import { TweetContext } from "./components/TweetProvider";
-
+import SignupPage from "./pages/SignupPage";
 function AppContent() {
   // const { loading: userLoading, error: userError } = useContext(UserContext);
   // const { loading: tweetsLoading, error: tweetsError } =
@@ -43,6 +43,7 @@ function AppContent() {
           </MainLayout>
         }
       />
+      <Route path="/Tweeter-2.0-Project/signup" element={<SignupPage />} />
     </Routes>
   );
 }

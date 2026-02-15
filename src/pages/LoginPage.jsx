@@ -6,6 +6,8 @@ import { UserContext } from "../components/ContextProvider";
 import { useState, useContext } from "react";
 
 function LoginPage() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { handleLogin } = useContext(UserContext);
@@ -27,6 +29,12 @@ function LoginPage() {
         />
         <Button variant="filled" onClick={() => handleLogin(email, password)}>
           Log In
+        </Button>
+        <Button
+          variant="filled"
+          onClick={() => navigate("/Tweeter-2.0-Project/signup")}
+        >
+          Signup
         </Button>
       </Flex>
     </>
