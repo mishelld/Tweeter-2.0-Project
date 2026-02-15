@@ -8,16 +8,25 @@ function ContextProvider({ children }) {
 
   const [username, setUsername] = useState("Bob");
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
+      setLoading(true);
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
+        setUser(session?.user ?? null);
 
-      if (!session?.user) {
-        navigate("/Tweeter-2.0-Project/", { replace: true });
+        if (!session?.user) {
+          navigate("/Tweeter-2.0-Project/", { replace: true });
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -28,26 +37,51 @@ function ContextProvider({ children }) {
     setUsername(name);
   }
   const handleLogin = async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (error) return;
-    setUser(data.user);
-    setUsername(email);
-    navigate("/Tweeter-2.0-Project/home");
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        setError(error.message);
+        return;
+      }
+      setUser(data.user);
+      setUsername(email);
+      navigate("/Tweeter-2.0-Project/home");
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      return;
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        setError(error.message);
+        return;
+      }
+      navigate("/Tweeter-2.0-Project/");
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
-    navigate("/Tweeter-2.0-Project/");
   };
   return (
     <>
       <UserContext.Provider
-        value={{ username, onUpdateUsername, handleLogout, handleLogin }}
+        value={{
+          username,
+          onUpdateUsername,
+          handleLogout,
+          handleLogin,
+          error,
+          loading,
+        }}
       >
         {children}
       </UserContext.Provider>
