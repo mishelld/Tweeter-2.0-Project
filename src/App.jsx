@@ -15,14 +15,14 @@ import { UserContext } from "./components/ContextProvider";
 import { TweetContext } from "./components/TweetProvider";
 
 function AppContent() {
-  const { loading: userLoading, error: userError } = useContext(UserContext);
-  const { loading: tweetsLoading, error: tweetsError } =
-    useContext(TweetContext);
+  // const { loading: userLoading, error: userError } = useContext(UserContext);
+  // const { loading: tweetsLoading, error: tweetsError } =
+  //   useContext(TweetContext);
 
-  if (userLoading) return <LoadingPage />;
-  if (userError) return <ErrorPage message={userError} />;
-  if (tweetsLoading) return <LoadingPage />;
-  if (tweetsError) return <ErrorPage message={tweetsError} />;
+  // if (userLoading) return <LoadingPage />;
+  // if (userError) return <ErrorPage message={userError} />;
+  // if (tweetsLoading) return <LoadingPage />;
+  // if (tweetsError) return <ErrorPage message={tweetsError} />;
 
   return (
     <Routes>

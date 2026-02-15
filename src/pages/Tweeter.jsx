@@ -20,14 +20,14 @@ function Tweeter() {
     localStorage.setItem("tweets", JSON.stringify(tweets));
   }, [tweets]);
     */
-  /*
+
   return loading ? (
     <LoadingPage />
   ) : error ? (
     <ErrorPage message={error} />
   ) : (
     <Home className="home" />
-  );*/
-  return <Home className="home" />;
+  );
+  // return <Home className="home" />;
 }
 export default Tweeter;
