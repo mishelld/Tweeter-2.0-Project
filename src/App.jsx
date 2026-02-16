@@ -9,6 +9,7 @@ import ContextProvider from "./components/ContextProvider";
 import TweetProvider from "./components/TweetProvider";
 import LoginPage from "./pages/LoginPage";
 import MainLayout from "./pages/MainLayout";
+import HeroPage from "./pages/HeroPage";
 import LoadingPage from "./pages/LoadingPage";
 import ErrorPage from "./pages/ErrorPage";
 import { UserContext } from "./components/ContextProvider";
@@ -26,7 +27,8 @@ function AppContent() {
 
   return (
     <Routes>
-      <Route path="/Tweeter-2.0-Project/" element={<LoginPage />} />
+      <Route path="/Tweeter-2.0-Project/" element={<HeroPage />} />
+      <Route path="/Tweeter-2.0-Project/login" element={<LoginPage />} />
       <Route
         path="/Tweeter-2.0-Project/home"
         element={

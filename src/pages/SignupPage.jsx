@@ -37,7 +37,7 @@ function SignupPage() {
 
           <Text className={classes.subtitle}>
             Already have an account?{" "}
-            <Anchor component={Link} to="/Tweeter-2.0-Project/">
+            <Anchor component={Link} to="/Tweeter-2.0-Project/login">
               Login
             </Anchor>
           </Text>

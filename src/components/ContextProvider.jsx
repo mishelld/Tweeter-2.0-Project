@@ -22,7 +22,7 @@ function ContextProvider({ children }) {
         setUser(session?.user ?? null);
 
         if (!session?.user) {
-          //  navigate("/Tweeter-2.0-Project/", { replace: true });
+          //   navigate("/Tweeter-2.0-Project/", { replace: true });
         }
       } catch (error) {
         setError(error.message);
