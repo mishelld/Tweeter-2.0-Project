@@ -1,12 +1,9 @@
-import { supabase } from "../components/supabaseClient";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/auth/AuthProvider";
 import {
   Anchor,
   Button,
-  Checkbox,
   Container,
-  Group,
   Paper,
   PasswordInput,
   Text,

@@ -4,7 +4,6 @@ import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
 import UserPage from "./pages/UserPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useContext } from "react";
 import AuthProvider from "./providers/auth/AuthProvider";
 import TweetProvider from "./providers/TweetProvider";
 import LoginPage from "./pages/LoginPage";
@@ -13,15 +12,6 @@ import HeroPage from "./pages/HeroPage";
 import SignupPage from "./pages/SignupPage";
 import ProtectedRoute from "./providers/auth/ProtectedRoute";
 function AppContent() {
-  // const { loading: userLoading, error: userError } = useContext(UserContext);
-  // const { loading: tweetsLoading, error: tweetsError } =
-  //   useContext(TweetContext);
-
-  // if (userLoading) return <LoadingPage />;
-  // if (userError) return <ErrorPage message={userError} />;
-  // if (tweetsLoading) return <LoadingPage />;
-  // if (tweetsError) return <ErrorPage message={tweetsError} />;
-
   return (
     <Routes>
       <Route path="/Tweeter-2.0-Project/" element={<HeroPage />} />
