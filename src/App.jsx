@@ -5,7 +5,7 @@ import { MantineProvider } from "@mantine/core";
 import UserPage from "./pages/UserPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
-import AuthProvider from "./providers/AuthProvider";
+import AuthProvider from "./providers/auth/AuthProvider";
 import TweetProvider from "./providers/TweetProvider";
 import LoginPage from "./pages/LoginPage";
 import MainLayout from "./pages/MainLayout";
