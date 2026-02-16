@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { supabase } from "../components/supabaseClient";
+import { supabase } from "../supabaseClient";
 
 export const TweetContext = createContext();
 
