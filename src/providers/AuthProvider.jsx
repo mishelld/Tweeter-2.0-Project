@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../supabaseClient";
+import { supabase } from "../components/supabaseClient";
 import { em } from "@mantine/core";
 
 export const AuthContext = createContext();

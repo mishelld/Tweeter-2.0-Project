@@ -1,6 +1,6 @@
 import { supabase } from "../components/supabaseClient";
 import { useNavigate, Link } from "react-router-dom";
-import { AuthContext } from "../components/providers/AuthProvider";
+import { AuthContext } from "../providers/AuthProvider";
 import {
   Anchor,
   Button,
