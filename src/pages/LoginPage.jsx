@@ -1,6 +1,6 @@
 import { supabase } from "../components/supabaseClient";
 import { useNavigate, Link } from "react-router-dom";
-import { UserContext } from "../components/AuthProvider";
+import { AuthContext } from "../components/AuthProvider";
 import {
   Anchor,
   Button,
@@ -21,7 +21,7 @@ import ErrorPage from "./ErrorPage";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { handleLogin, error, loading } = useContext(UserContext);
+  const { handleLogin, error, loading } = useContext(AuthContext);
 
   return (
     <>

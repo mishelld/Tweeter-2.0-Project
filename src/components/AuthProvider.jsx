@@ -1,8 +1,9 @@
 import { createContext, useState, useEffect } from "react";
-export const UserContext = createContext();
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { em } from "@mantine/core";
+
+export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const navigate = useNavigate();
@@ -96,7 +97,7 @@ function AuthProvider({ children }) {
 
   return (
     <>
-      <UserContext.Provider
+      <AuthContext.Provider
         value={{
           username,
           onUpdateUsername,
@@ -108,7 +109,7 @@ function AuthProvider({ children }) {
         }}
       >
         {children}
-      </UserContext.Provider>
+      </AuthContext.Provider>
     </>
   );
 }

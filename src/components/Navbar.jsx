@@ -1,6 +1,6 @@
 import { IconBrandMessenger } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
-import { UserContext } from "./AuthProvider";
+import { AuthContext } from "./AuthProvider";
 import { useContext } from "react";
 import "./Navbar.css";
 import { useState } from "react";
@@ -12,7 +12,7 @@ const links = [
   { link: "/Tweeter-2.0-Project/user/1", label: "User" },
 ];
 function Navbar() {
-  const { handleLogout } = useContext(UserContext);
+  const { handleLogout } = useContext(AuthContext);
 
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);

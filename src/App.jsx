@@ -10,10 +10,6 @@ import TweetProvider from "./components/TweetProvider";
 import LoginPage from "./pages/LoginPage";
 import MainLayout from "./pages/MainLayout";
 import HeroPage from "./pages/HeroPage";
-import LoadingPage from "./pages/LoadingPage";
-import ErrorPage from "./pages/ErrorPage";
-import { UserContext } from "./components/AuthProvider";
-import { TweetContext } from "./components/TweetProvider";
 import SignupPage from "./pages/SignupPage";
 function AppContent() {
   // const { loading: userLoading, error: userError } = useContext(UserContext);
