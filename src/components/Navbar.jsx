@@ -1,38 +1,58 @@
-import { NavLink, Flex, Button, Group } from "@mantine/core";
-import { IconHome2, IconUser, IconLogout } from "@tabler/icons-react";
+import {
+  IconHome2,
+  IconUser,
+  IconLogout,
+  IconBrandMessenger,
+} from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../components/ContextProvider";
 import { useContext } from "react";
 import "./Navbar.css";
+import { useState } from "react";
+import { Burger, Container, Group } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import classes from "./HeaderSimple.module.css";
+const links = [
+  { link: "/Tweeter-2.0-Project/home", label: "Home" },
+  { link: "/Tweeter-2.0-Project/user/1", label: "User" },
+];
 function Navbar() {
   const { handleLogout } = useContext(UserContext);
 
+  const [opened, { toggle }] = useDisclosure(false);
+  const [active, setActive] = useState(links[0].link);
+
+  const items = links.map((link) => (
+    <Link
+      key={link.label}
+      to={link.link}
+      className={classes.link}
+      data-active={active === link.link || undefined}
+      onClick={(event) => {
+        setActive(link.link);
+      }}
+    >
+      {link.label}
+    </Link>
+  ));
+
   return (
-    <>
-      <Flex className="navbar" align="center" justify="space-between">
-        <Flex>
-          <NavLink
-            component={Link}
-            to="/Tweeter-2.0-Project/home"
-            label="Home"
-            variant="filled"
-            active
-            leftSection={<IconHome2 size={16} stroke={1.5} />}
-          />
-          <NavLink
-            component={Link}
-            to="/Tweeter-2.0-Project/user/1"
-            label="User"
-            variant="filled"
-            active
-            leftSection={<IconUser size={16} stroke={1.5} />}
-          />
-        </Flex>
-        <Button onClick={handleLogout} color="red">
-          Logout
-        </Button>
-      </Flex>
-    </>
+    <header className={`${classes.header} navbar`}>
+      <Container size="md" className={`${classes.inner}`}>
+        <IconBrandMessenger size={28} />
+        <Group gap={5} visibleFrom="xs">
+          {items}
+        </Group>
+
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          hiddenFrom="xs"
+          size="sm"
+          aria-label="Toggle navigation"
+        />
+      </Container>
+    </header>
   );
 }
 export default Navbar;
