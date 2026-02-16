@@ -1,8 +1,19 @@
 import { supabase } from "../components/supabaseClient";
-import { useNavigate } from "react-router-dom";
-import { Button, TextInput, Flex, em } from "@mantine/core";
+import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../components/ContextProvider";
-
+import {
+  Anchor,
+  Button,
+  Checkbox,
+  Container,
+  Group,
+  Paper,
+  PasswordInput,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
+import classes from "./AuthenticationTitle.module.css";
 import { useState, useContext } from "react";
 
 function LoginPage() {
@@ -13,31 +24,46 @@ function LoginPage() {
   const { handleLogin } = useContext(UserContext);
 
   return (
-    <>
-      <Flex direction="column" gap="md">
+    <Container size={420} my={40}>
+      <Title ta="center" className={classes.title}>
+        Welcome back!
+      </Title>
+
+      <Text className={classes.subtitle}>
+        Do not have an account yet?{" "}
+        <Anchor component={Link} to="/Tweeter-2.0-Project/signup">
+          Create account
+        </Anchor>
+      </Text>
+
+      <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
         <TextInput
-          description="Email"
-          placeholder="Email"
+          label="Email"
+          placeholder="you@mantine.dev"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
+          radius="md"
         />
-        <TextInput
-          description="Password"
-          placeholder="Password"
+        <PasswordInput
+          label="Password"
+          placeholder="Your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+          mt="md"
+          radius="md"
         />
-        <Button variant="filled" onClick={() => handleLogin(email, password)}>
-          Log In
-        </Button>
         <Button
-          variant="filled"
-          onClick={() => navigate("/Tweeter-2.0-Project/signup")}
+          fullWidth
+          mt="xl"
+          radius="md"
+          onClick={() => handleLogin(email, password)}
         >
-          Signup
+          Sign in
         </Button>
-      </Flex>
-    </>
+      </Paper>
+    </Container>
   );
 }
 export default LoginPage;

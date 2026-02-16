@@ -1,10 +1,21 @@
 import { supabase } from "../components/supabaseClient";
-import { useNavigate } from "react-router-dom";
-import { Button, TextInput, Flex, em } from "@mantine/core";
+import { useNavigate, Link } from "react-router-dom";
 import { UserContext } from "../components/ContextProvider";
 import LoadingPage from "./LoadingPage";
 import ErrorPage from "./ErrorPage";
-
+import {
+  Anchor,
+  Button,
+  Checkbox,
+  Container,
+  Group,
+  Paper,
+  PasswordInput,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
+import classes from "./AuthenticationTitle.module.css";
 import { useState, useContext } from "react";
 
 function SignupPage() {
@@ -19,26 +30,46 @@ function SignupPage() {
       ) : error ? (
         <ErrorPage message={error} />
       ) : (
-        <Flex direction="column" gap="md">
-          <TextInput
-            description="Email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextInput
-            description="Password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Button
-            variant="filled"
-            onClick={() => handleSignup(email, password)}
-          >
-            Sign up
-          </Button>
-        </Flex>
+        <Container size={420} my={40}>
+          <Title ta="center" className={classes.title}>
+            Welcome to tweeter
+          </Title>
+
+          <Text className={classes.subtitle}>
+            Already have an account?{" "}
+            <Anchor component={Link} to="/Tweeter-2.0-Project/">
+              Login
+            </Anchor>
+          </Text>
+
+          <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
+            <TextInput
+              label="Email"
+              placeholder="you@mantine.dev"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              radius="md"
+            />
+            <PasswordInput
+              label="Password"
+              placeholder="Your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              mt="md"
+              radius="md"
+            />
+            <Button
+              fullWidth
+              mt="xl"
+              radius="md"
+              onClick={() => handleSignup(email.trim(), password)}
+            >
+              Register
+            </Button>
+          </Paper>
+        </Container>
       )}
     </>
   );

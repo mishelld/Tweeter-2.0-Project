@@ -75,7 +75,10 @@ function ContextProvider({ children }) {
   const handleSignup = async (email, password) => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.auth.signUp({ email, password });
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
       if (error) {
         setError(error.message);
         console.log(error);
