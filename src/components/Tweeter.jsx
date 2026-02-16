@@ -1,9 +1,8 @@
 import { useContext } from "react";
-import LoadingPage from "./LoadingPage";
+import LoadingPage from "../pages/LoadingPage";
 import "./Tweeter.css";
-import ErrorPage from "./ErrorPage";
-import Home from "./Home";
-import "./home.css";
+import ErrorPage from "../pages/ErrorPage";
+import Home from "../pages/Home";
 import { TweetContext } from "../providers/TweetProvider";
 
 function Tweeter() {
