@@ -5,14 +5,14 @@ import { MantineProvider } from "@mantine/core";
 import UserPage from "./pages/UserPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
-import ContextProvider from "./components/ContextProvider";
+import ContextProvider from "./components/AuthProvider";
 import TweetProvider from "./components/TweetProvider";
 import LoginPage from "./pages/LoginPage";
 import MainLayout from "./pages/MainLayout";
 import HeroPage from "./pages/HeroPage";
 import LoadingPage from "./pages/LoadingPage";
 import ErrorPage from "./pages/ErrorPage";
-import { UserContext } from "./components/ContextProvider";
+import { UserContext } from "./components/AuthProvider";
 import { TweetContext } from "./components/TweetProvider";
 import SignupPage from "./pages/SignupPage";
 function AppContent() {

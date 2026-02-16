@@ -1,6 +1,6 @@
 import { IconBrandMessenger } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../components/ContextProvider";
+import { UserContext } from "./AuthProvider";
 import { useContext } from "react";
 import "./Navbar.css";
 import { useState } from "react";

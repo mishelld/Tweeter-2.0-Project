@@ -4,7 +4,7 @@ import "./Tweeter.css";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import "./home.css";
-import { UserContext } from "../components/ContextProvider";
+import { UserContext } from "../components/AuthProvider";
 import { TweetContext } from "../components/TweetProvider";
 
 function Tweeter() {

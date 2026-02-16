@@ -1,7 +1,7 @@
 import { Button, TextInput, Flex } from "@mantine/core";
 import { useState, useContext } from "react";
 import "./UserPage.css";
-import { UserContext } from "../components/ContextProvider";
+import { UserContext } from "../components/AuthProvider";
 
 function UserPage() {
   const { username, onUpdateUsername } = useContext(UserContext);

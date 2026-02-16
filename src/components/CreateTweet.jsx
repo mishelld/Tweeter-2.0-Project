@@ -2,7 +2,7 @@ import { Button, Textarea, Card, Flex } from "@mantine/core";
 import "./CreateTweet.css";
 import { useState, useContext } from "react";
 import { TweetContext } from "../components/TweetProvider";
-import { UserContext } from "../components/ContextProvider";
+import { UserContext } from "./AuthProvider";
 
 function CreateTweet() {
   const { handleAddTweet } = useContext(TweetContext);

@@ -1,6 +1,6 @@
 import { supabase } from "../components/supabaseClient";
 import { useNavigate, Link } from "react-router-dom";
-import { UserContext } from "../components/ContextProvider";
+import { UserContext } from "../components/AuthProvider";
 import LoadingPage from "./LoadingPage";
 import ErrorPage from "./ErrorPage";
 import {
