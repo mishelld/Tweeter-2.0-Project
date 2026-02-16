@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import MainLayout from "./pages/MainLayout";
 import HeroPage from "./pages/HeroPage";
 import SignupPage from "./pages/SignupPage";
+import ProtectedRoute from "./providers/auth/ProtectedRoute";
 function AppContent() {
   // const { loading: userLoading, error: userError } = useContext(UserContext);
   // const { loading: tweetsLoading, error: tweetsError } =
@@ -28,17 +29,21 @@ function AppContent() {
       <Route
         path="/Tweeter-2.0-Project/home"
         element={
-          <MainLayout>
-            <Tweeter />
-          </MainLayout>
+          <ProtectedRoute>
+            <MainLayout>
+              <Tweeter />
+            </MainLayout>
+          </ProtectedRoute>
         }
       />
       <Route
         path="/Tweeter-2.0-Project/user/:id"
         element={
-          <MainLayout>
-            <UserPage />
-          </MainLayout>
+          <ProtectedRoute>
+            <MainLayout>
+              <UserPage />
+            </MainLayout>
+          </ProtectedRoute>
         }
       />
       <Route path="/Tweeter-2.0-Project/signup" element={<SignupPage />} />

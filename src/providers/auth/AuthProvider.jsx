@@ -99,6 +99,7 @@ function AuthProvider({ children }) {
     <>
       <AuthContext.Provider
         value={{
+          user,
           username,
           onUpdateUsername,
           handleLogout,
