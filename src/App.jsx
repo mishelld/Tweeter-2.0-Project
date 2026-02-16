@@ -5,7 +5,7 @@ import { MantineProvider } from "@mantine/core";
 import UserPage from "./pages/UserPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useContext } from "react";
-import ContextProvider from "./components/AuthProvider";
+import AuthProvider from "./components/AuthProvider";
 import TweetProvider from "./components/TweetProvider";
 import LoginPage from "./pages/LoginPage";
 import MainLayout from "./pages/MainLayout";
@@ -53,11 +53,11 @@ function App() {
   return (
     <MantineProvider>
       <BrowserRouter>
-        <ContextProvider>
+        <AuthProvider>
           <TweetProvider>
             <AppContent />
           </TweetProvider>
-        </ContextProvider>
+        </AuthProvider>
       </BrowserRouter>
     </MantineProvider>
   );

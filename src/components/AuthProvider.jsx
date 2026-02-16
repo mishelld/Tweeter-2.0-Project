@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import { em } from "@mantine/core";
 
-function ContextProvider({ children }) {
+function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("Bob");
@@ -113,4 +113,4 @@ function ContextProvider({ children }) {
   );
 }
 
-export default ContextProvider;
+export default AuthProvider;
