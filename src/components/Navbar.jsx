@@ -1,15 +1,10 @@
-import {
-  IconHome2,
-  IconUser,
-  IconLogout,
-  IconBrandMessenger,
-} from "@tabler/icons-react";
+import { IconBrandMessenger } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../components/ContextProvider";
 import { useContext } from "react";
 import "./Navbar.css";
 import { useState } from "react";
-import { Burger, Container, Group } from "@mantine/core";
+import { Burger, Container, Group, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import classes from "./HeaderSimple.module.css";
 const links = [
@@ -42,6 +37,9 @@ function Navbar() {
         <IconBrandMessenger size={28} />
         <Group gap={5} visibleFrom="xs">
           {items}
+          <Button color="red" onClick={handleLogout}>
+            Logout
+          </Button>
         </Group>
 
         <Burger
