@@ -9,9 +9,15 @@ function AuthProvider({ children }) {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("Bob");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null,
+  );
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    localStorage.setItem("activeUser", JSON.stringify(user));
+  }, [user]);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -21,10 +27,6 @@ function AuthProvider({ children }) {
           data: { session },
         } = await supabase.auth.getSession();
         setUser(session?.user ?? null);
-
-        if (!session?.user) {
-          //   navigate("/Tweeter-2.0-Project/", { replace: true });
-        }
       } catch (error) {
         setError(error.message);
       } finally {
