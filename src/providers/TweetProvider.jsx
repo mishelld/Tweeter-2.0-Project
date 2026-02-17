@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { supabase } from "../components/supabaseClient";
+import { supabase } from "../data/supabaseClient";
 
 export const TweetContext = createContext();
 
