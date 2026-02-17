@@ -25,8 +25,6 @@ function SignupPage() {
     <>
       {loading ? (
         <LoadingPage />
-      ) : error ? (
-        <ErrorPage message={error} />
       ) : (
         <Container size={420} my={40}>
           <Title ta="center" className={classes.title}>
@@ -67,6 +65,7 @@ function SignupPage() {
               Register
             </Button>
           </Paper>
+          {error && <ErrorPage message={error} />}
         </Container>
       )}
     </>

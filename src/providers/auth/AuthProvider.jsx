@@ -41,6 +41,7 @@ function AuthProvider({ children }) {
   }
   const handleLogin = async (email, password) => {
     setLoading(true);
+    setError(null);
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
@@ -61,6 +62,7 @@ function AuthProvider({ children }) {
   };
   const handleLogout = async () => {
     setLoading(true);
+    setError(null);
     try {
       const { error } = await supabase.auth.signOut();
       if (error) {
@@ -76,6 +78,7 @@ function AuthProvider({ children }) {
   };
   const handleSignup = async (email, password) => {
     setLoading(true);
+    setError(null);
     try {
       const { data, error } = await supabase.auth.signUp({
         email,

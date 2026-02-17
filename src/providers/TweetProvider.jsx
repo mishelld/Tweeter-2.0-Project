@@ -9,6 +9,7 @@ function TweetProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const handleAddTweet = async (tweet) => {
     setLoading(true);
+    setError(null);
     try {
       const { data, error } = await supabase
         .from("Tweets")
@@ -26,6 +27,7 @@ function TweetProvider({ children }) {
     }
   };
   const fetchTweets = async () => {
+    setError(null);
     try {
       const { data, error } = await supabase
         .from("Tweets")

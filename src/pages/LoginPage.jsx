@@ -24,21 +24,17 @@ function LoginPage() {
     <>
       {loading ? (
         <LoadingPage />
-      ) : error ? (
-        <ErrorPage message={error} />
       ) : (
         <Container size={420} my={40}>
           <Title ta="center" className={classes.title}>
             Welcome back!
           </Title>
-
           <Text className={classes.subtitle}>
             Do not have an account yet?{" "}
             <Anchor component={Link} to="/Tweeter-2.0-Project/signup">
               Create account
             </Anchor>
           </Text>
-
           <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
             <TextInput
               label="Email"
@@ -66,6 +62,7 @@ function LoginPage() {
               Sign in
             </Button>
           </Paper>
+          {error && <ErrorPage message={error} />}
         </Container>
       )}
     </>
