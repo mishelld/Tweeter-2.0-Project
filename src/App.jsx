@@ -35,7 +35,7 @@ function AppContent() {
         }
       />
       <Route
-        path={`${BASE_PATH}/user/:id`}
+        path={`${BASE_PATH}/userProfile`}
         element={
           <ProtectedRoute>{withLayoutAndProvider(UserPage)}</ProtectedRoute>
         }

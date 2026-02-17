@@ -9,7 +9,7 @@ import { useDisclosure } from "@mantine/hooks";
 import classes from "./HeaderSimple.module.css";
 const links = [
   { link: "/Tweeter-2.0-Project/home", label: "Home" },
-  { link: "/Tweeter-2.0-Project/user/1", label: "User" },
+  { link: "/Tweeter-2.0-Project/userProfile", label: "User" },
 ];
 function Navbar() {
   const { handleLogout } = useContext(AuthContext);
