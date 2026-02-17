@@ -19,7 +19,7 @@ function TweetProvider({ children }) {
         setError(error.message);
         return;
       }
-      setTweets([data[0], ...tweets]);
+      setTweets((prevTweets) => [data[0], ...prevTweets]);
     } catch (error) {
       setError(error.message);
     } finally {
