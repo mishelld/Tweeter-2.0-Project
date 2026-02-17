@@ -11,6 +11,8 @@ import MainLayout from "./pages/MainLayout";
 import HeroPage from "./pages/HeroPage";
 import SignupPage from "./pages/SignupPage";
 import ProtectedRoute from "./providers/auth/ProtectedRoute";
+import { useState } from "react";
+
 const BASE_PATH = "/Tweeter-2.0-Project";
 
 function withLayoutAndProvider(Component) {
@@ -45,11 +47,13 @@ function AppContent() {
   );
 }
 function App() {
+  const [isAuthReady, setAuthReady] = useState(false);
+
   return (
     <MantineProvider>
       <BrowserRouter>
-        <AuthProvider>
-          <AppContent />
+        <AuthProvider onAuthReady={() => setAuthReady(true)}>
+          {isAuthReady && <AppContent />}
         </AuthProvider>
       </BrowserRouter>
     </MantineProvider>

@@ -4,19 +4,13 @@ import { supabase } from "../../components/supabaseClient";
 
 export const AuthContext = createContext();
 
-function AuthProvider({ children }) {
+function AuthProvider({ onAuthReady, children }) {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("Bob");
-  const [user, setUser] = useState(
-    localStorage.activeUser ? JSON.parse(localStorage.activeUser) : null,
-  );
+  const [username, setUsername] = useState("");
+  const [user, setUser] = useState();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    localStorage.setItem("activeUser", JSON.stringify(user));
-  }, [user]);
 
   useEffect(() => {
     const checkSession = async () => {
@@ -29,6 +23,7 @@ function AuthProvider({ children }) {
       } catch (error) {
         setError(error.message);
       } finally {
+        onAuthReady();
         setLoading(false);
       }
     };
