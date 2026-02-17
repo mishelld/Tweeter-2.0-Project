@@ -11,32 +11,36 @@ import MainLayout from "./pages/MainLayout";
 import HeroPage from "./pages/HeroPage";
 import SignupPage from "./pages/SignupPage";
 import ProtectedRoute from "./providers/auth/ProtectedRoute";
+const BASE_PATH = "/Tweeter-2.0-Project";
+
+function withLayoutAndProvider(Component) {
+  return (
+    <TweetProvider>
+      <MainLayout>
+        <Component />
+      </MainLayout>
+    </TweetProvider>
+  );
+}
+
 function AppContent() {
   return (
     <Routes>
-      <Route path="/Tweeter-2.0-Project/" element={<HeroPage />} />
-      <Route path="/Tweeter-2.0-Project/login" element={<LoginPage />} />
+      <Route path={`${BASE_PATH}/`} element={<HeroPage />} />
+      <Route path={`${BASE_PATH}/login`} element={<LoginPage />} />
       <Route
-        path="/Tweeter-2.0-Project/home"
+        path={`${BASE_PATH}/home`}
         element={
-          <ProtectedRoute>
-            <MainLayout>
-              <Tweeter />
-            </MainLayout>
-          </ProtectedRoute>
+          <ProtectedRoute>{withLayoutAndProvider(Tweeter)}</ProtectedRoute>
         }
       />
       <Route
-        path="/Tweeter-2.0-Project/user/:id"
+        path={`${BASE_PATH}/user/:id`}
         element={
-          <ProtectedRoute>
-            <MainLayout>
-              <UserPage />
-            </MainLayout>
-          </ProtectedRoute>
+          <ProtectedRoute>{withLayoutAndProvider(UserPage)}</ProtectedRoute>
         }
       />
-      <Route path="/Tweeter-2.0-Project/signup" element={<SignupPage />} />
+      <Route path={`${BASE_PATH}/signup`} element={<SignupPage />} />
     </Routes>
   );
 }
@@ -45,9 +49,7 @@ function App() {
     <MantineProvider>
       <BrowserRouter>
         <AuthProvider>
-          <TweetProvider>
-            <AppContent />
-          </TweetProvider>
+          <AppContent />
         </AuthProvider>
       </BrowserRouter>
     </MantineProvider>
